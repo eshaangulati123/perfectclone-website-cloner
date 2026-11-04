@@ -23,10 +23,8 @@ REF = re.compile(
 # robots.txt still apply. From an href, only files that are clearly assets are mirrored.
 ASSET_HREF = re.compile(
     r"\.(css|js|mjs|ico|png|jpe?g|gif|svg|webp|avif|woff2?|ttf|otf|json|webmanifest|xml|pdf|mp4|webm)(\?|$)", re.I)
-# Lazily loaded chunks and runtime-loaded files (wasm, Rive animations, WebGL data, shaders) appear
-# only as string literals inside scripts, in any folder, often page-relative and with a
-# cache-busting query. A first segment with a dot is a bare hostname, not a folder, and
-# node_modules paths are source locations that bundlers leave in strings, not served files.
+# Lazy chunks and other files loaded at runtime appear only as string literals inside scripts.
+# Bundlers leave node_modules source paths in strings too; those aren't served.
 CHUNK = re.compile(
     r"""["'`](?:\./)?(/?(?!node_modules/)[\w-]+/[^"'`\s?]+?"""
     r"""\.(?:js|mjs|css|woff2?|ttf|otf|png|jpe?g|webp|avif|svg|gif|mp4|webm|json|wasm|riv|bin|glb|gltf)"""

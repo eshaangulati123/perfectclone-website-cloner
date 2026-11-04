@@ -6,9 +6,8 @@ All notable changes to this project are documented here. The format follows
 
 ## Unreleased
 
-- `clone`: mirror files that scripts reference as string literals in any folder, including
-  page-relative paths with a query string (`'vendor/rive/rive.js?v=…'`), plus `.wasm`, `.riv`
-  and WebGL data (`.bin`, `.glb`, `.gltf`) files.
+- `clone`: mirror files scripts reference by path in any folder, including `./` and `?v=` paths
+  and `.wasm`, `.riv`, `.bin`, `.glb`, `.gltf` files.
 
 ## 0.1.0
 
